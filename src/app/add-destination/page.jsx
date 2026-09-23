@@ -1,13 +1,40 @@
 'use client'
-import { Button, FieldError, Input, Label, ListBox, TextArea, TextField , Select } from "@heroui/react";
+import { Button, FieldError, Input, Label, ListBox, TextArea, TextField , Select, Card } from "@heroui/react";
 
 
 const AddDestinationPage = () => {
-    return (
-        <div>
-            add destination page
 
-            <form
+  const onSubmit  = async(e)=>{
+
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+
+    const destination = Object.fromEntries(formData.entries())
+
+    console.log(destination)
+
+
+    const res = await fetch("http://localhost:5000/destination" , {
+      method: "POST",
+      headers : {
+        'content-type' : 'application/json',
+        
+      },
+      body: JSON.stringify(destination)
+    } )
+
+    const data = await res.json()
+
+    console.log(data)
+
+  }
+    return (
+        <div className="p-5 max-w-7xl mx-auto">
+           <h2 className="text-2xl font-bold mb-5">Add Destination </h2>
+<Card  className="p-3 w-3xl"><form
+
+onSubmit={onSubmit}
             className="p-10 space-y-8"
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -135,9 +162,10 @@ const AddDestinationPage = () => {
               // isLoading={isPending}
               className=" rounded-none w-full bg-cyan-500 text-white"
             >
-              {/* {isPending ? "Adding Package..." : "Add Travel Package"} */}
+             Add package
             </Button>
-          </form>
+          </form></Card>
+            
             
         </div>
     );
