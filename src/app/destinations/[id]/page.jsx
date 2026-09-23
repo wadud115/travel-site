@@ -1,14 +1,63 @@
+import Image from 'next/image';
+import { LuMapPin } from "react-icons/lu";
 import React from 'react';
+import { IoCalendarNumberOutline } from 'react-icons/io5';
+import { Button } from '@heroui/react';
+import Link from 'next/link';
+import { BiEdit } from 'react-icons/bi';
+import { EditModel } from '@/components/EditModal';
+
 
 const DestinationDetailsPage = async({params}) => {
 
     const {id} = await params;
-    console.log(id)
+    const res = await fetch(`http://localhost:5000/destination/${id}`)
+    const destination = await res.json()
+    console.log(destination)
+     const {destinationName, country , price ,  duration , imageUrl , description} = destination;
+    // console.log(id)
 
     return (
-        <div>
+        <div className='max-w-7xl mx-auto'>
 
-            DestinationDetailsPage
+            <h1 className='font-bold text-2xl my-3 text-center'>DestinationDetailsPage</h1>
+
+            <div className=' card p-10 m-10'>
+
+                <EditModel destination={destination}></EditModel>
+
+               
+
+            <div>
+                <Image src={imageUrl} 
+            alt={destinationName}
+            width={500}
+            height={800}
+            
+            >
+
+            </Image>
+            </div>
+
+            <div className='space-y-3'>
+                
+                <div className='flex gap-1 items-center mt-2'>
+                <LuMapPin /> {country}
+                </div>
+
+                <div className='flex gap-8 font-bold'>
+                    <h2>{destinationName}</h2>
+                    <div>${price}</div>
+                </div>
+
+                <div className='flex gap-2 items-center'>
+                    <IoCalendarNumberOutline />
+                    {duration}
+                </div>
+
+            </div>
+            
+        </div>
             
         </div>
     );

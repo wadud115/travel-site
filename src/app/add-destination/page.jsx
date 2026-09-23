@@ -32,7 +32,9 @@ const AddDestinationPage = () => {
     return (
         <div className="p-5 max-w-7xl mx-auto">
            <h2 className="text-2xl font-bold mb-5">Add Destination </h2>
-<Card  className="p-3 w-3xl"><form
+<Card  className="p-3 w-3xl">
+  
+  <form
 
 onSubmit={onSubmit}
             className="p-10 space-y-8"
