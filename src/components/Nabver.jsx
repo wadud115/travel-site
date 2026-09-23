@@ -9,6 +9,7 @@ const Nabver = () => {
                 <li><Link href={'/'}>Home</Link></li>
                 <li><Link href={'/destination'}>Destination</Link></li>
                 <li><Link href={'/my-bookings'}>My Bookings</Link></li>
+                <li><Link href={'/add-destination'}>Add destination</Link></li>
             </ul>
 
 
