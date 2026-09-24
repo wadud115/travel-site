@@ -6,6 +6,7 @@ import { Button } from '@heroui/react';
 import Link from 'next/link';
 import { BiEdit } from 'react-icons/bi';
 import { EditModel } from '@/components/EditModal';
+import { DeleteAlertPage } from '@/components/DeleteAlert';
 
 
 const DestinationDetailsPage = async({params}) => {
@@ -24,7 +25,11 @@ const DestinationDetailsPage = async({params}) => {
 
             <div className=' card p-10 m-10'>
 
+<div className='flex justify-end gap-3 items-center'>
+    
                 <EditModel destination={destination}></EditModel>
+                <DeleteAlertPage destination={destination}></DeleteAlertPage>
+</div>
 
                
 
