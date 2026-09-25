@@ -1,3 +1,4 @@
+import { BookingDeleteAlert } from '@/components/BookingDeleteAlert';
 import { auth } from '@/lib/auth';
 import { TrashBin } from '@gravity-ui/icons';
 import { Button, Calendar } from '@heroui/react';
@@ -26,6 +27,8 @@ const user = session?.user
     const bookings = await res.json()
 
     // console.log(bookings)
+
+   
     
     return (
         <div className='max-w-7xl mx-auto my-10 '>
@@ -34,7 +37,7 @@ const user = session?.user
 
             <div className='space-y-4'>{
                 bookings.map( booking => <div className='flex gap-10  border min-w-3xl p-5 '  key={booking._id}>
-
+                         
                     <Image src={booking.imageUrl}
                     alt={booking.destinationName}
                     width={200}
@@ -53,7 +56,7 @@ const user = session?.user
 
                         <div className='flex justify-between'>
                             <p className='font-bold text-xl text-cyan-400'>Price : ${booking.price}</p>
-                            <Button variant='outline' className={'rounded-none text-red-500 border-red-500'} ><TrashBin></TrashBin>Cancel</Button>
+                            <BookingDeleteAlert bookingId = {booking._id}></BookingDeleteAlert>
                         </div>
                     </div>
 
