@@ -25,7 +25,7 @@ export function DeleteAlertPage ({destination}) {
    
   return (
     <AlertDialog>
-      <Button className={"text-red-500 rounded-none"} variant="outline"> <TrashBin></TrashBin> Delete Project</Button>
+      <Button className={"text-red-500 rounded-none"} variant="outline"> <TrashBin></TrashBin> Delete Destination</Button>
       <AlertDialog.Backdrop>
         <AlertDialog.Container>
           <AlertDialog.Dialog className="sm:max-w-[400px]">

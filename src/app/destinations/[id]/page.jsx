@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { BiEdit } from 'react-icons/bi';
 import { EditModel } from '@/components/EditModal';
 import { DeleteAlertPage } from '@/components/DeleteAlert';
+import BookCard from '@/components/BookCard';
 
 
 const DestinationDetailsPage = async({params}) => {
@@ -14,7 +15,7 @@ const DestinationDetailsPage = async({params}) => {
     const {id} = await params;
     const res = await fetch(`http://localhost:5000/destination/${id}`)
     const destination = await res.json()
-    console.log(destination)
+    // console.log(destination)
      const {destinationName, country , price ,  duration , imageUrl , description} = destination;
     // console.log(id)
 
@@ -44,7 +45,8 @@ const DestinationDetailsPage = async({params}) => {
             </Image>
             </div>
 
-            <div className='space-y-3'>
+            <div className='flex justify-between gap-5'>
+                <div className='space-y-3'>
                 
                 <div className='flex gap-1 items-center mt-2'>
                 <LuMapPin /> {country}
@@ -52,7 +54,7 @@ const DestinationDetailsPage = async({params}) => {
 
                 <div className='flex gap-8 font-bold'>
                     <h2>{destinationName}</h2>
-                    <div>${price}</div>
+                    
                 </div>
 
                 <div className='flex gap-2 items-center'>
@@ -61,7 +63,11 @@ const DestinationDetailsPage = async({params}) => {
                 </div>
 
             </div>
+
+            <BookCard destination={destination}></BookCard>
             
+            </div>
+
         </div>
             
         </div>

@@ -18,6 +18,10 @@ const Nabver = () => {
 
     console.log(user)
 
+    const handleSignOut = async()=>{
+        await authClient.signOut();
+    }
+
 
     return (
         <nav className='flex items-center justify-between p-5 shadow-xs'>
@@ -44,11 +48,11 @@ const Nabver = () => {
 
                 <li>
                      <Avatar>
-        <Avatar.Image alt="John Doe" src={user?.image} />
+        <Avatar.Image referrerPolicy='no-referrer' alt="John Doe" src={user?.image} />
         <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
       </Avatar>
                 </li>
-                <li><Button variant='danger' className={'rounded-none'}>Log out</Button></li>
+                <li ><Button onClick={handleSignOut} variant='danger' className={'rounded-none'}>Log out</Button></li>
                 
                 </> 
                 
