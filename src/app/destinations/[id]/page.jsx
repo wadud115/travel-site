@@ -8,12 +8,27 @@ import { BiEdit } from 'react-icons/bi';
 import { EditModel } from '@/components/EditModal';
 import { DeleteAlertPage } from '@/components/DeleteAlert';
 import BookCard from '@/components/BookCard';
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
 
 
 const DestinationDetailsPage = async({params}) => {
 
     const {id} = await params;
-    const res = await fetch(`http://localhost:5000/destination/${id}`)
+
+    const {token} = await auth.api.getToken({
+        headers : await headers()
+    })
+
+    console.log(token)
+
+
+
+    const res = await fetch(`http://localhost:5000/destination/${id}` , {
+        headers : {
+            authorization : `Bearer ${token}`
+        }
+    })
     const destination = await res.json()
     // console.log(destination)
      const {destinationName, country , price ,  duration , imageUrl , description} = destination;
